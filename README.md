@@ -1,7 +1,7 @@
-# Orbit — Reimagine Social
+# Orbit — Reimagine Social Media App
 
 <div align="center">
-  <img src="screenshots/02_orbit_3d.png" alt="Orbit 3D Space Map" width="100%" style="border-radius: 12px;"/>
+  <img src="screenshots/logo.png" alt="Orbit Logo" width="120" style="border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);"/>
   <br/><br/>
   <strong>Moments, not metrics.</strong>
   <br/>
@@ -24,12 +24,17 @@ Every existing "anti-feed" app still retains the two mechanics that make social 
 
 <div align="center">
   <img src="screenshots/01_orbit_top.png" alt="Orbit Top View" width="49%"/>
+  <img src="screenshots/02_orbit_3d.png" alt="Orbit 3D Map" width="49%"/>
+</div>
+<br/>
+<div align="center">
   <img src="screenshots/03_orbit_rotated.png" alt="Orbit Map Rotated" width="49%"/>
+  <img src="screenshots/05_sky_sanctuary.png" alt="Sky Sanctuary Profile" width="49%"/>
 </div>
 <br/>
 <div align="center">
   <img src="screenshots/04_spark_modal.png" alt="Spark Interaction Modal" width="49%"/>
-  <img src="screenshots/05_sky_sanctuary.png" alt="Sky Sanctuary Profile" width="49%"/>
+  <img src="screenshots/06_spark_modal_decay.png" alt="Spark Decay Details" width="49%"/>
 </div>
 
 ---
