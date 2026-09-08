@@ -36,6 +36,11 @@ Every existing "anti-feed" app still retains the two mechanics that make social 
   <img src="screenshots/04_spark_modal.png" alt="Spark Interaction Modal" width="49%"/>
   <img src="screenshots/06_spark_modal_decay.png" alt="Spark Decay Details" width="49%"/>
 </div>
+<br/>
+<div align="center">
+  <img src="screenshots/07_mutual_chat.png" alt="Mutual Resonance Chat" width="49%"/>
+  <img src="screenshots/08_thesis_pitch.png" alt="Hackathon Thesis Pitch Deck" width="49%"/>
+</div>
 
 ---
 
