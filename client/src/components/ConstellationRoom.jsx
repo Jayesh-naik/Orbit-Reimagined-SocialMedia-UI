@@ -78,7 +78,15 @@ const ConstellationRoom = ({ constellationId, sparks, onSelectSpark, onBack, onC
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{spark.avatar}</span>
+                      {spark.avatar?.startsWith('http') ? (
+                        <img 
+                          src={spark.avatar} 
+                          alt={spark.author} 
+                          className="h-7 w-7 rounded-full object-cover shadow-sm border border-slate-700" 
+                        />
+                      ) : (
+                        <span className="text-lg">{spark.avatar}</span>
+                      )}
                       <span className="text-xs font-bold text-slate-300">{spark.author}</span>
                     </div>
                     {spark.isAnchored ? (
