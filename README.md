@@ -1,7 +1,7 @@
 # Orbit — Reimagine Social
 
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&auto=format&fit=crop&q=80" alt="Universe Orbit Background" width="100%" style="border-radius: 12px;"/>
+  <img src="screenshots/02_orbit_3d.png" alt="Orbit 3D Space Map" width="100%" style="border-radius: 12px;"/>
   <br/><br/>
   <strong>Moments, not metrics.</strong>
   <br/>
@@ -17,6 +17,20 @@ Every existing "anti-feed" app still retains the two mechanics that make social 
 2. **Permanent Accumulation** (profiles as public grids of past posts).
 
 **Orbit attacks both mechanics directly.** It completely rejects linear feeds, algorithmic recommendations, and follower counts, replacing them with a live **3D radial orbital space**, **decaying moments**, and **mutual-only signal reciprocity**.
+
+---
+
+## 📸 Application Screenshots
+
+<div align="center">
+  <img src="screenshots/01_orbit_top.png" alt="Orbit Top View" width="49%"/>
+  <img src="screenshots/03_orbit_rotated.png" alt="Orbit Map Rotated" width="49%"/>
+</div>
+<br/>
+<div align="center">
+  <img src="screenshots/04_spark_modal.png" alt="Spark Interaction Modal" width="49%"/>
+  <img src="screenshots/05_sky_sanctuary.png" alt="Sky Sanctuary Profile" width="49%"/>
+</div>
 
 ---
 
