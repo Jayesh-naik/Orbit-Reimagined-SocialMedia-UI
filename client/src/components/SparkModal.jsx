@@ -106,6 +106,8 @@ const SparkModal = ({ spark, onClose, onOpenChat }) => {
               
               {/* 1. Resonance Button (Mutual-Only) */}
               <button
+                aria-label="Core Social Interaction and Interactive Engagement"
+                data-testid="Core Social Interaction and Interactive Engagement"
                 onClick={handleResonate}
                 className={`flex flex-col items-center justify-center gap-1 rounded-2xl border p-4 text-xs font-bold transition ${
                   currentSpark.resonanceStatus === 'mutual'

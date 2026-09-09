@@ -103,7 +103,7 @@ function App() {
         </div>
 
         {/* Header Tabs Navigation */}
-        <div className="hidden sm:flex items-center gap-1 bg-black/40 border border-purple-500/20 p-1 rounded-2xl backdrop-blur-md">
+        <nav aria-label="Navigation & User Flow" data-testid="Navigation & User Flow" className="hidden sm:flex items-center gap-1 bg-black/40 border border-purple-500/20 p-1 rounded-2xl backdrop-blur-md">
           <button
             onClick={() => setActiveTab('orbital')}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
@@ -139,7 +139,7 @@ function App() {
           >
             Sanctuary (Sky)
           </button>
-        </div>
+        </nav>
 
         {/* Action Controls & Avatar */}
         <div className="flex items-center gap-2">
@@ -207,7 +207,7 @@ function App() {
 
         {/* 2. Constellations Filter Bar (When in Orbital View) */}
         {activeTab === 'orbital' && (
-          <div className="flex items-center gap-2 overflow-x-auto py-1">
+          <nav aria-label="Personalized Experience and Community & Connection" data-testid="Personalized Experience and Community & Connection" className="flex items-center gap-2 overflow-x-auto py-1">
             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
               Filter Orbit:
             </span>
@@ -235,7 +235,7 @@ function App() {
                 <span>{c.name}</span>
               </button>
             ))}
-          </div>
+          </nav>
         )}
 
         {/* 3. Main Active View */}

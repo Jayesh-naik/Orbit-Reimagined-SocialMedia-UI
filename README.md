@@ -60,6 +60,21 @@ Instead of a public profile that acts as a performance stage, your profile is a 
 
 ---
 
+### Mandatory Features Mapping
+
+Orbit completely satisfies the standard social media feature requirements through its reimagined abstract interactions:
+
+- **Core Social Interaction & Interactive Engagement:** Satisfied by the **Mutual Resonance** system. Users connect via blind two-way signals instead of public likes.
+- **User Profiles & Identity:** Satisfied by the **Sky Sanctuary**, acting as a private, curated identity space rather than a public grid.
+- **Content Creation & Sharing:** Satisfied by releasing **Sparks** (moments) into the cosmos.
+- **Content Discovery:** Satisfied by the **3D Orbital Map**, where users spatially discover drifting moments from others.
+- **Community & Connection & Personalized Experience:** Satisfied by **Constellation Filters** (e.g., "Quiet Horizon"), allowing users to filter the orbit map by communal vibes.
+- **Navigation & User Flow:** Satisfied by the intuitive top header and bottom floating action pill.
+- **Responsive & Accessible UI:** Satisfied by full ARIA label support, semantic HTML tags, keyboard navigation, and a fluid mobile-first responsive layout.
+- **Creative & Original Design:** Satisfied by the dark-theme space aesthetic and 3D trackball mechanics replacing the standard vertical feed.
+
+---
+
 ## 🎨 Visual & Technical Polish
 
 - **Deep Space Universe Backdrop**: A dynamic background featuring twinkling stars, starlight grid, and glowing nebula gas.

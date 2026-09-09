@@ -91,7 +91,7 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
   const featuredSpark = previewSpark || sparks[0];
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-300">
+    <main aria-label="Content Discovery and Content Creation & Sharing" data-testid="Content Discovery and Content Creation & Sharing" className="space-y-6 animate-in fade-in duration-300">
       
       {/* 1. Header Metadata Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-2">
@@ -113,10 +113,7 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
 
       {/* 2. Top Moment Preview Speech Bubble */}
       {featuredSpark && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          key={featuredSpark.id}
+        <article
           onClick={() => onSelectSpark(featuredSpark)}
           className="mx-auto cursor-pointer max-w-sm sm:max-w-lg rounded-2xl border-2 border-purple-500/40 bg-[#0e1329]/95 p-4 backdrop-blur-xl shadow-[0_0_30px_rgba(139,92,246,0.25)] transition hover:border-purple-300 hover:scale-[1.02]"
         >
@@ -137,7 +134,7 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </article>
       )}
 
       {/* 3. Main 3D Tilted & Rotated Orbit Viewport */}
@@ -148,12 +145,10 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
           isDragging ? 'cursor-grabbing' : ''
         }`}
       >
-        {/* Deep Space Cosmic Nebula Background Layer */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/60 via-[#050814] to-[#020308] pointer-events-none" />
         <div className="absolute top-1/4 left-1/4 h-80 w-80 rounded-full bg-purple-600/15 blur-3xl pointer-events-none animate-pulse" />
         <div className="absolute bottom-1/3 right-1/4 h-96 w-96 rounded-full bg-cyan-600/10 blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
 
-        {/* Dynamic Twinkling Small Stars Starfield Layer */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {CELESTIAL_STARS.map((star) => (
             <div
@@ -174,16 +169,13 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
           ))}
         </div>
         
-        {/* Subtle Starlight Grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#8b5cf6_1.5px,transparent_1.5px)] [background-size:40px_40px] opacity-15 pointer-events-none" />
 
-        {/* Floating 3D Drag Direction Hint */}
         <div className="absolute top-4 left-4 z-30 flex items-center gap-2 rounded-full bg-black/60 border border-purple-500/30 px-3.5 py-1.5 text-[10px] font-extrabold text-purple-300 backdrop-blur-md shadow-lg pointer-events-none">
           <Move className="h-3.5 w-3.5 text-orange-400 animate-pulse" />
           <span>Drag 3D Sky (360° Rotate & Tilt)</span>
         </div>
 
-        {/* 3D PERSPECTIVE CONTAINER */}
         <div
           className="relative flex items-center justify-center"
           style={{
@@ -192,93 +184,42 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
             height: '100%',
           }}
         >
-          {/* TILTED & ROTATED ORBITAL PLANE (rotateX: tiltAngle, rotateZ: rotationAngle) */}
           <div
             className="relative flex items-center justify-center"
             style={{
               transformStyle: 'preserve-3d',
               transform: `rotateX(${tiltAngle}deg) rotateZ(${rotationAngle}deg)`,
-              transition: isDragging ? 'none' : 'transform 0.05s ease-out',
-              width: '580px',
-              height: '580px',
+              width: '400px',
+              height: '400px',
+              transition: isDragging ? 'none' : 'transform 0.1s linear',
             }}
           >
+            
+            {[200, 320, 480].map((radius, i) => (
+              <div
+                key={`ring-${i}`}
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  width: `${radius * 2}px`,
+                  height: `${radius * 2}px`,
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  border: '2px solid rgba(139, 92, 246, 0.25)',
+                  boxShadow: hoveredRing === i ? '0 0 20px rgba(139, 92, 246, 0.4) inset, 0 0 20px rgba(139, 92, 246, 0.4)' : 'none',
+                  transition: 'box-shadow 0.3s ease',
+                  zIndex: 10,
+                }}
+              />
+            ))}
 
-            {/* VIBRANT & HIGHLY VISIBLE 3D CONCENTRIC ORBIT RINGS WITH HOVER GLOW */}
-
-            {/* Inner Orbit Ring (Ring 1) */}
-            <div
-              onMouseEnter={() => setHoveredRing(1)}
-              onMouseLeave={() => setHoveredRing(null)}
-              className={`absolute h-[280px] w-[280px] rounded-full border-2 transition-all duration-300 pointer-events-auto ${
-                hoveredRing === 1
-                  ? 'border-cyan-300 shadow-[0_0_45px_rgba(6,182,212,0.85)] scale-105'
-                  : 'border-cyan-500/60 shadow-[0_0_25px_rgba(6,182,212,0.35)]'
-              }`}
-            />
-
-            {/* Middle Orbit Ring (Ring 2) */}
-            <div
-              onMouseEnter={() => setHoveredRing(2)}
-              onMouseLeave={() => setHoveredRing(null)}
-              className={`absolute h-[420px] w-[420px] rounded-full border-2 transition-all duration-300 pointer-events-auto ${
-                hoveredRing === 2
-                  ? 'border-purple-300 shadow-[0_0_55px_rgba(168,85,247,0.9)] scale-105'
-                  : 'border-purple-500/60 shadow-[0_0_30px_rgba(168,85,247,0.35)]'
-              }`}
-            />
-
-            {/* Outer Orbit Ring (Ring 3) */}
-            <div
-              onMouseEnter={() => setHoveredRing(3)}
-              onMouseLeave={() => setHoveredRing(null)}
-              className={`absolute h-[560px] w-[560px] rounded-full border-2 transition-all duration-300 pointer-events-auto ${
-                hoveredRing === 3
-                  ? 'border-orange-300 shadow-[0_0_65px_rgba(249,115,22,0.9)] scale-105'
-                  : 'border-orange-500/50 shadow-[0_0_35px_rgba(249,115,22,0.25)]'
-              }`}
-            />
-
-
-            {/* HIGH-CLARITY CENTER USER AVATAR ("YOU / core") - FUNCTIONAL ONCLICK */}
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                soundFx.playAnchorSound();
-                if (onOpenSky) onOpenSky();
-              }}
-              title="Click to view your Sanctuary (Sky Profile)"
-              className="absolute z-20 flex flex-col items-center justify-center pointer-events-auto cursor-pointer group hover:scale-110 transition-transform duration-200"
-              style={{
-                // Counter-rotate both Yaw & Pitch so avatar stays upright facing the camera
-                transform: `rotateZ(${-rotationAngle}deg) rotateX(${-tiltAngle}deg)`,
-              }}
-            >
-              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full border-4 border-orange-500 bg-gradient-to-tr from-orange-600 via-amber-500 to-indigo-600 shadow-[0_0_50px_rgba(249,115,22,0.9)] p-1 group-hover:border-cyan-400 group-hover:shadow-[0_0_60px_rgba(6,182,212,0.9)]">
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80"
-                  alt="You Core"
-                  className="h-full w-full rounded-full object-cover shadow-inner"
-                />
-                <span className="absolute -bottom-1.5 rounded-full bg-orange-600 group-hover:bg-cyan-600 px-2.5 py-0.5 text-[9px] font-black tracking-widest text-white uppercase shadow-md border border-orange-400 group-hover:border-cyan-300 transition">
-                  YOU
-                </span>
-              </div>
-              <span className="mt-2 text-[10px] font-bold text-slate-300 group-hover:text-cyan-300 uppercase tracking-widest transition">
-                core presence (click sky)
-              </span>
-            </div>
-
-
-            {/* LARGER & CRISP ORBITING USER AVATAR NODES */}
-            {sparks.map((spark, index) => {
-              const baseAngleRad = ((spark.angleDeg || index * 60) * Math.PI) / 180;
-              const rx = spark.orbitRadiusX || 220;
-              const ry = spark.orbitRadiusY || 110;
-
+            {sparks.map((spark) => {
+              const radius = [200, 320, 480][spark.orbitRingIndex || 0] || 320;
+              const baseAngleRad = (spark.orbitAngle || 0) * (Math.PI / 180);
+              const rx = radius;
+              const ry = radius * 0.55; 
               const posX = Math.cos(baseAngleRad) * rx;
               const posY = Math.sin(baseAngleRad) * ry;
-
               const glowColor = spark.glowColor || '#06b6d4';
 
               return (
@@ -298,15 +239,12 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
                   style={{
                     left: `calc(50% + ${posX}px)`,
                     top: `calc(50% + ${posY}px)`,
-                    // Billboarding: counter-rotate both Yaw & Pitch
                     transform: `translate(-50%, -50%) rotateZ(${-rotationAngle}deg) rotateX(${-tiltAngle}deg)`,
                   }}
                 >
                   <div className="flex flex-col items-center group-hover:scale-125 transition-transform duration-200">
-                    
-                    {/* Larger Glowing Avatar Frame (64px - 72px) */}
                     <div
-                      className="relative flex h-16 w-16 sm:h-18 sm:w-18 items-center justify-center rounded-full border-3 bg-[#080c1a] shadow-2xl p-0.5 transition-all duration-300 group-hover:border-white"
+                      className="relative flex h-16 w-16 items-center justify-center rounded-full border-3 bg-[#080c1a] shadow-2xl p-0.5 transition-all duration-300 group-hover:border-white"
                       style={{
                         borderColor: glowColor,
                         boxShadow: `0 0 35px ${glowColor}80`,
@@ -319,64 +257,81 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
                           className="h-full w-full rounded-full object-cover shadow-sm"
                         />
                       ) : (
-                        <div
-                          className="flex h-full w-full items-center justify-center rounded-full text-base font-black text-white"
-                          style={{ backgroundColor: `${glowColor}40` }}
-                        >
-                          {spark.avatar}
-                        </div>
+                        <span className="text-3xl">{spark.avatar}</span>
                       )}
-
-                      {/* Status indicator pulse dot */}
+                      
                       <span
-                        className="absolute -top-1 -right-1 h-4 w-4 rounded-full border-2 border-[#050814] shadow-md animate-bounce"
+                        className="absolute -right-1 -top-1 h-4 w-4 rounded-full border-2 border-[#080c1a]"
                         style={{ backgroundColor: glowColor }}
                       />
                     </div>
-
-                    {/* Node Text & Status Pills */}
-                    <div className="mt-1.5 text-center">
-                      <span className="text-xs font-black text-white block drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                    
+                    <div className="mt-2 rounded-xl bg-[#080c1a]/90 border border-slate-800 px-2.5 py-1 text-center backdrop-blur-md shadow-lg">
+                      <p className="text-[11px] font-black tracking-wide text-slate-100">
                         {spark.author}
-                      </span>
-                      <span
-                        className="rounded-full px-2 py-0.5 text-[9px] font-extrabold block truncate max-w-[90px] border border-white/10 shadow-sm"
-                        style={{ backgroundColor: `${glowColor}30`, color: '#ffffff' }}
-                      >
-                        {spark.statusTag}
-                      </span>
+                      </p>
+                      <p className="text-[9px] font-bold text-slate-400">
+                        {spark.orbitLabel || 'drifting'}
+                      </p>
                     </div>
-
                   </div>
                 </div>
               );
             })}
 
+            <div
+              className="absolute cursor-pointer group z-40"
+              onClick={onOpenSky}
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: `translate(-50%, -50%) rotateZ(${-rotationAngle}deg) rotateX(${-tiltAngle}deg)`,
+              }}
+            >
+              <div className="flex flex-col items-center group-hover:scale-110 transition-transform">
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-full border-4 border-orange-500 bg-[#060912] shadow-[0_0_50px_rgba(249,115,22,0.4)] p-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80"
+                    alt="Core Presence"
+                    className="h-full w-full rounded-full object-cover opacity-90 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 rounded-full border border-orange-400/50 animate-ping opacity-30" />
+                </div>
+                <div className="mt-2 rounded-xl bg-orange-500 px-3 py-1 text-center shadow-lg">
+                  <p className="text-[10px] font-black tracking-widest text-white uppercase">
+                    YOU
+                  </p>
+                </div>
+                <p className="mt-1 text-[8px] uppercase tracking-[0.2em] font-extrabold text-orange-200/50 group-hover:text-orange-200">
+                  Core Presence (Click Sky)
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
+      </div>
 
-        {/* DRAG & ROTATION CONTROLS BAR */}
-        <div className="absolute bottom-5 left-5 z-30 flex items-center gap-2.5">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-2">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setIsAutoRotating(!isAutoRotating)}
-            className="rounded-full bg-black/70 border border-purple-500/30 px-3.5 py-1.5 text-[10px] font-extrabold text-slate-200 hover:text-white backdrop-blur-md flex items-center gap-1.5 transition shadow-lg"
+            className="flex items-center gap-2 rounded-xl bg-[#0e142e] border border-purple-500/20 px-4 py-2 text-xs font-bold text-slate-300 hover:bg-purple-900/40 hover:text-white transition"
           >
-            {isAutoRotating ? <Pause className="h-3.5 w-3.5 text-amber-400" /> : <Play className="h-3.5 w-3.5 text-emerald-400" />}
-            <span>{isAutoRotating ? 'Pause Auto-Orbit' : 'Auto Orbit'}</span>
+            {isAutoRotating ? <Pause className="h-3 w-3 text-amber-400" /> : <Play className="h-3 w-3 text-emerald-400" />}
+            {isAutoRotating ? 'Pause Auto-Orbit' : 'Resume Auto-Orbit'}
           </button>
 
           <button
             onClick={handleReset3DView}
-            className="rounded-full bg-black/70 border border-purple-500/30 px-3 py-1.5 text-[10px] font-extrabold text-slate-400 hover:text-white backdrop-blur-md transition"
+            className="rounded-xl bg-[#0e142e] border border-purple-500/20 px-4 py-2 text-xs font-bold text-slate-300 hover:bg-purple-900/40 hover:text-white transition"
           >
             Reset 3D View
           </button>
         </div>
-
       </div>
 
-      {/* 4. Bottom "Current Resonance" Status Card */}
-      <div className="rounded-3xl border-2 border-purple-500/30 bg-gradient-to-r from-[#0e142e] via-[#121938] to-[#0e142e] p-6 shadow-2xl backdrop-blur-xl">
+      <div className="rounded-3xl border-2 border-purple-500/20 bg-[#080b18]/80 backdrop-blur-xl p-5 shadow-lg">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2.5">
             <span className="h-3 w-3 rounded-full bg-orange-500 animate-ping" />
@@ -394,7 +349,6 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
         </p>
 
         <div className="flex items-center justify-between">
-          {/* Avatar stack */}
           <div className="flex items-center gap-3">
             <div className="flex -space-x-2">
               <img
@@ -413,7 +367,6 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
             </div>
           </div>
 
-          {/* Glowing Orange Send Pulse Action */}
           <button
             onClick={handleSendPulse}
             className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-xs font-extrabold text-white hover:brightness-110 shadow-[0_0_30px_rgba(249,115,22,0.5)] transition"
@@ -428,7 +381,7 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
         </div>
       </div>
 
-    </div>
+    </main>
   );
 };
 

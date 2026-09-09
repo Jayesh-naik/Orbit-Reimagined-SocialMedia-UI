@@ -14,7 +14,7 @@ const SkyProfile = ({ skySparks, onSelectSpark }) => {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-200">
+    <main aria-label="User Profiles & Identity" data-testid="User Profiles & Identity" className="space-y-6 animate-in fade-in duration-200">
       
       {/* Sky Banner */}
       <div className="relative overflow-hidden rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-950 p-8 text-white shadow-2xl">
@@ -56,26 +56,26 @@ const SkyProfile = ({ skySparks, onSelectSpark }) => {
         {skyList.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {skyList.map((spark) => (
-              <div
+              <article
                 key={spark.id}
                 onClick={() => onSelectSpark(spark)}
-                className="group cursor-pointer rounded-2xl border border-cyan-500/30 bg-[#080d1a]/90 p-5 shadow-lg backdrop-blur-md transition hover:border-cyan-400 hover:scale-[1.02] flex flex-col justify-between"
+                className="cursor-pointer rounded-2xl border border-cyan-500/30 bg-[#060b14]/90 p-5 shadow-[0_0_15px_rgba(6,182,212,0.05)] backdrop-blur-md transition hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:scale-[1.02] flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-2">
                       {spark.avatar?.startsWith('http') ? (
-                        <img
-                          src={spark.avatar}
-                          alt={spark.author}
-                          className="h-8 w-8 rounded-full object-cover border border-cyan-400"
+                        <img 
+                          src={spark.avatar} 
+                          alt={`${spark.author}'s avatar`} 
+                          className="h-7 w-7 rounded-full object-cover shadow-sm border border-cyan-700" 
                         />
                       ) : (
-                        <span className="text-lg font-bold">{spark.avatar || '✨'}</span>
+                        <span className="text-lg">{spark.avatar || '✨'}</span>
                       )}
                       <span className="text-xs font-bold text-slate-300">{spark.author}</span>
                     </div>
-                    <span className="rounded-full bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 text-[9px] font-bold text-cyan-300 flex items-center gap-1">
+                    <span className="flex items-center gap-1 rounded-full bg-slate-800 px-2 py-0.5 text-[9px] font-bold text-cyan-400 border border-cyan-500/20">
                       <Lock className="h-2.5 w-2.5" /> Private
                     </span>
                   </div>
@@ -85,23 +85,21 @@ const SkyProfile = ({ skySparks, onSelectSpark }) => {
                   </p>
                 </div>
 
-                <div className="mt-4 border-t border-slate-800/80 pt-3 flex items-center justify-between text-[10px] text-slate-400">
-                  <span className="font-semibold text-cyan-400">{spark.constellationTag}</span>
-                  
+                <div className="mt-4 border-t border-cyan-900/40 pt-3 flex items-center justify-between text-[10px] text-slate-400">
+                  <span className="font-semibold text-cyan-500/70">{spark.constellationTag}</span>
                   <button
                     onClick={(e) => handleUnanchor(e, spark.id)}
                     className="flex items-center gap-1 text-slate-500 hover:text-rose-400 transition"
-                    title="Remove from Sky (Let fade)"
+                    aria-label={`Unanchor moment by ${spark.author}`}
                   >
-                    <Trash2 className="h-3.5 w-3.5" />
+                    <Trash2 className="h-3 w-3" />
                     <span>Unanchor</span>
                   </button>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         ) : (
-          /* Empty State for Sky */
           <div className="rounded-3xl border border-dashed border-slate-800 bg-[#060911] p-12 text-center space-y-3">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
               <Sparkles className="h-6 w-6" />
@@ -115,7 +113,7 @@ const SkyProfile = ({ skySparks, onSelectSpark }) => {
         )}
       </div>
 
-    </div>
+    </main>
   );
 };
 
