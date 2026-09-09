@@ -2,10 +2,10 @@
 // 3D Orbital space state with decaying Sparks, Resonance, and Private Sky Anchoring.
 
 const STORAGE_KEYS = {
-  SPARKS: 'orbit_sparks_data',
-  SKY: 'orbit_sky_anchored',
-  RESONANCES: 'orbit_resonances',
-  CHATS: 'orbit_chats',
+  SPARKS: 'orbit_sparks_data_v2',
+  SKY: 'orbit_sky_anchored_v2',
+  RESONANCES: 'orbit_resonances_v2',
+  CHATS: 'orbit_chats_v2',
 };
 
 export const CONSTELLATIONS = [
