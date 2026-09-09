@@ -174,6 +174,8 @@ function App() {
 
           {/* Functional User Profile Avatar */}
           <button
+            aria-label="User Profiles & Identity"
+            data-testid="User Profiles & Identity"
             onClick={() => {
               soundFx.playAnchorSound();
               setActiveTab('sky');

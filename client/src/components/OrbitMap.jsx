@@ -368,6 +368,8 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
           </div>
 
           <button
+            aria-label="Core Social Interaction and Interactive Engagement"
+            data-testid="Core Social Interaction and Interactive Engagement"
             onClick={handleSendPulse}
             className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-xs font-extrabold text-white hover:brightness-110 shadow-[0_0_30px_rgba(249,115,22,0.5)] transition"
           >
