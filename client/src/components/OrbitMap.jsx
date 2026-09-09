@@ -215,7 +215,7 @@ const OrbitMap = ({ sparks, onSelectSpark, onOpenSky }) => {
 
             {sparks.map((spark) => {
               const radius = [200, 320, 480][spark.orbitRingIndex || 0] || 320;
-              const baseAngleRad = (spark.orbitAngle || 0) * (Math.PI / 180);
+              const baseAngleRad = (spark.angleDeg || spark.orbitAngle || 0) * (Math.PI / 180);
               const rx = radius;
               const ry = radius * 0.55; 
               const posX = Math.cos(baseAngleRad) * rx;
